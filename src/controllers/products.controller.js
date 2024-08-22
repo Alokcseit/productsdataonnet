@@ -81,9 +81,9 @@ const setProducts=asyncHandler(async(req,res,next)=>{
         title,
         descryption,
         price,
-        image: imageUrl,
         quantity,
-        status
+        status,
+        image: imageUrl
     });
     console.log(productonnet);
     return res.status(201).json(

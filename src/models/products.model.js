@@ -15,11 +15,8 @@ import mongoose from "mongoose";
     price:{
         type:Number,
         required:true
-    },
-    image:{
-        type:String,
-        required:true
     }
+   
     ,quantity:{
         type:String,
         required:true
@@ -27,6 +24,10 @@ import mongoose from "mongoose";
     status:{
         type:Boolean,
         default:true
+    }
+    , image:{
+        type:String,
+        required:true
     }
  },{timestamps:true})
 
