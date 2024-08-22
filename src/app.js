@@ -2,7 +2,6 @@ import express,{urlencoded} from "express"
 const app=express()
 import cors from "cors"
 import coockieParser from "cookie-parser"
-
 app.use(express.json(
     {
         limit:"50mb"

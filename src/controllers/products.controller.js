@@ -22,16 +22,17 @@ const getProducts=asyncHandler(async(req,res,next)=>{
 const getProductByProductId = asyncHandler(async (req, res, next) => {
     try {
         const { productId } = req.params;  // Assuming the productId is passed as a URL parameter
-
-        // Find the product by productId to get the MongoDB _id
-        const existingProduct = await products.findOne({ productId });
+        console.log("Received productId:", productId);
+        // Find the product by productId
+        const existingProduct = await productsonnet.findOne({ productId });
         
         if (!existingProduct) {
             throw new ApiError("Product not found", 404);
         }
 
-        // Find the product by its MongoDB _id
-        const product = await products.findById(existingProduct._id);
+        // Find the product by its MongoDB _id and project specific fields
+        const product = await productsonnet.findById(existingProduct._id)
+            .select('productId title descryption price quantity status'); // Adjust the fields as needed
         
         if (!product) {
             throw new ApiError("Product not found", 404);
@@ -44,6 +45,7 @@ const getProductByProductId = asyncHandler(async (req, res, next) => {
         return next(error);
     }
 });
+
 
 
 const setProducts=asyncHandler(async(req,res,next)=>{
